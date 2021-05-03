@@ -9,6 +9,10 @@
 ## Features:
 ### Create Post
 ### Comment on Post
+- auto-generated creation date
+- uses AGO Twig Filter
+- sorting done also with the SORT Twig Filter
+
 ### Profile page
 
 ### Back Office: 
