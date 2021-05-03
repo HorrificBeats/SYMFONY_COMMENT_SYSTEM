@@ -8,8 +8,8 @@
 
 ## Features:
 ### Create Post
-
 ### Comment on Post
+### Profile page
 
 ### Back Office: 
   - comments list
@@ -17,3 +17,4 @@
 ### Security:
   - Register new account
   - Log in / Log out
+
