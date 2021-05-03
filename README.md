@@ -7,5 +7,13 @@
 
 
 ## Features:
-- Security:
-  - Create account
+### Create Post
+
+### Comment on Post
+
+### Back Office: 
+  - comments list
+
+### Security:
+  - Register new account
+  - Log in / Log out
