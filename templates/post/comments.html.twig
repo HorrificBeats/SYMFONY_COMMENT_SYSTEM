@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block title %}Homepage
+{% endblock %}
+{% block body %}
+	{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+	{% endfor %}
+	<h1> Comments </h1>
+	<table class="table table-striped bg-light rounded">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">User</th>
+				<th scope="col">Content</th>
+				<th scope="col">Post</th>
+				<th scope="col">Date</th>
+				<th> Delete </th>
+			</tr>
+		</thead>
+		<tbody>
+		{% set counter = 1 %}
+		{% for comment in comments | sort((a, b) => b.createdAt <=> a.createdAt)%}
+			
+			<tr>
+				<td> {{ counter }} </td>
+                {% set counter = counter +1 %}
+				<td>{{ comment.user.getName }}</td>
+				<td>{{ comment.content }}</td>
+				<td>{{ comment.post.getTitle }}</td>
+				<td>{{ comment.createdAt | ago }}</td>
+				<td> <a href="{{ path('comments_delete', {'id' : comment.id } )}}" class='btn btn-sm btn-danger w-100'> X </a> </td>
+			</tr>
+		{% endfor %}
+		
+
+		</tbody>
+	</table>
+{% endblock %}

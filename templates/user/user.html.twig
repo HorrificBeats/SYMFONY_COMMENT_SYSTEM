@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<h1 class='text-center mb-5'>
+		Profile Page
+	</h1>
+	<h2>
+		Account Details
+	</h2>
+	<div class="rounded shadow-sm p-3 row" style='background: #AEB4E7'>
+		<img src="http://picsum.photos/200/200" alt="Profil picture" class='col-3'>
+
+		<div class="col-9">
+			<h4>Name:</h4>
+			<h5 class='text-primary'>
+				{{ user.name }}
+			</h5>
+			
+			<h4>Email:</h4>
+			<h5 class='text-primary'>
+				{{ user.email }}
+			</h5>
+		</div>
+	</div>
+
+	<h2 class='mt-5'>
+		Comments
+	</h2>
+	<div class="rounded shadow-sm p-3 row" style='background: #AEB4E7'>
+		<table class="table table-striped bg-light rounded">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Comment</th>
+				<th scope="col">Post</th>
+				<th scope="col">Date</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% set counter = 1 %}
+		{% for comment in user.comments | sort((a, b) => b.createdAt <=> a.createdAt)%}
+			
+			<tr>
+				<td> {{ counter }} </td>
+                {% set counter = counter +1 %}
+				<td>{{ comment.content }}</td>
+				<td>{{ comment.post.getTitle }}</td>
+				<td>{{ comment.createdAt | ago }}</td>
+			</tr>
+		{% endfor %}
+		
+
+		</tbody>
+	</table>
+	</div>
+{% endblock %}
