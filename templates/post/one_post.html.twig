@@ -30,6 +30,8 @@
 						Post comment
 					</button>
 				</form>
+			{% else %}
+					<h5>You need to <a href="{{ path('app_login')}}">Login</a> or <a href="{{ path('app_register')}}">Register</a> to post a comment!</h5>
 			{% endif %}
 
 			<div class="mt-3">
