@@ -7,18 +7,46 @@
 		Account Details
 	</h2>
 	<div class="rounded shadow-sm p-3 row" style='background: #AEB4E7'>
-		<img src="http://picsum.photos/200/200" alt="Profil picture" class='col-3'>
+		<img src="http://picsum.photos/100" alt="Profil picture" class='col-3 rounded'>
 
-		<div class="col-9">
-			<h4>Name:</h4>
-			<h5 class='text-primary'>
-				{{ user.name }}
-			</h5>
-			
-			<h4>Email:</h4>
-			<h5 class='text-primary'>
-				{{ user.email }}
-			</h5>
+		<div class="card col-9">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-sm-3">
+						<h6 class="mb-0">Full Name</h6>
+					</div>
+					<div class="col-sm-9 text-secondary">
+						{{ user.name }}
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-sm-3">
+						<h6 class="mb-0">Email</h6>
+					</div>
+					<div class="col-sm-9 text-secondary">
+						{{ user.email }}
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-sm-3">
+						<h6 class="mb-0">Phone</h6>
+					</div>
+					<div class="col-sm-9 text-secondary">
+						xxx-xxxx-xxxx
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-sm-3">
+						<h6 class="mb-0">Address</h6>
+					</div>
+					<div class="col-sm-9 text-secondary">
+						Hogwarts, UK
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -27,29 +55,30 @@
 	</h2>
 	<div class="rounded shadow-sm p-3 row" style='background: #AEB4E7'>
 		<table class="table table-striped bg-light rounded">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Comment</th>
-				<th scope="col">Post</th>
-				<th scope="col">Date</th>
-			</tr>
-		</thead>
-		<tbody>
-		{% set counter = 1 %}
-		{% for comment in user.comments | sort((a, b) => b.createdAt <=> a.createdAt)%}
-			
-			<tr>
-				<td> {{ counter }} </td>
-                {% set counter = counter +1 %}
-				<td>{{ comment.content }}</td>
-				<td>{{ comment.post.getTitle }}</td>
-				<td>{{ comment.createdAt | ago }}</td>
-			</tr>
-		{% endfor %}
-		
-
-		</tbody>
-	</table>
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Comment</th>
+					<th scope="col">Post</th>
+					<th scope="col">Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set counter = 1 %}
+				{% for comment in user.comments | sort((a, b) => b.createdAt <=> a.createdAt)%}
+					<tr>
+						<td>
+							{{ counter }}
+						</td>
+						{% set counter = counter +1 %}
+						<td>{{ comment.content }}</td>
+						<td>{{ comment.post.getTitle }}</td>
+						<td>{{ comment.createdAt | ago }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 	</div>
+
+
 {% endblock %}
